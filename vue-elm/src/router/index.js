@@ -4,6 +4,7 @@ import Home from '@/pages/Home'
 import Find from '@/pages/Find'
 import Order from '@/pages/Order'
 import Mine from '@/pages/Mine'
+import SearchAdd from '@/pages/SearchAdd'
 
 Vue.use(Router)
 
@@ -28,6 +29,10 @@ export default new Router({
       path: '/mine',
       name: 'Mine',
       component: Mine
+    },{
+      path: '/address',
+      name: 'Address',
+      component: SearchAdd
     }
   ]
 })
