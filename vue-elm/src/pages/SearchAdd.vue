@@ -1,14 +1,10 @@
 <template>
     <div class="address-box">
         <div class="ads-box-head">
-            <div class="blue-tit">
-                <i @click="goback"></i>
-                <span>选择地址</span>
-            </div>
+            <h3 class="bluehead"><i @click="goback"></i>选择地址</h3>
             <div class="blue-inp">
                 <input type="text" placeholder="请输入地址" @keyup.enter="searchAdd" v-model="addValue">
             </div>
-            
         </div>
         <div class="ads-box-main" v-show="shdzFlag">
             <div class="ads-box-main-tit">收货地址</div>
@@ -33,6 +29,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'SearchAdd',
     data: function() {	
@@ -78,7 +75,10 @@ export default {
     background: #f4f4f4;
     overflow-y: auto;
 }
-.blue-tit, .blue-inp{
+.ads-box-head{
+    background-image: linear-gradient(90deg,#0af,#0085ff);
+}
+.blue-inp{
     width: 100%;
     height: 3rem;
     line-height: 3rem;
@@ -87,20 +87,6 @@ export default {
     text-align: center;
     color: #fff;
     position: relative;
-}
-.blue-tit{
-    font-size: 1.2rem;
-    font-weight: 700;
-}
-.blue-tit i{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 3rem;
-    height: 100%;
-    background: url(../imgs/back.png) no-repeat;
-    background-size: 50%;
-    background-position: center;
 }
 .blue-inp{
     line-height: 2.5rem;

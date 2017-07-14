@@ -2,7 +2,7 @@
     <div>
         <div class="content">
             <div class="mine-head">
-                <h3>我的</h3>
+                <h3 class="bluehead">我的</h3>
                 <div>
                     <div class="head-icon">
                         <img src="../assets/logo.png" alt="">
@@ -108,7 +108,9 @@ export default {
     background-image: -webkit-linear-gradient(left,#0af,#0085ff);
     background-image: linear-gradient(90deg,#0af,#0085ff);
 }
-.mine-head>h3{
+.bluehead{
+    background-image: -webkit-linear-gradient(left,#0af,#0085ff);
+    background-image: linear-gradient(90deg,#0af,#0085ff);
     height: 3rem;
     color: #fff;
     text-align: center;
