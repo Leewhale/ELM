@@ -24,7 +24,7 @@
         </div>
         <div class="buy_icon">
           <span @click="reduceCart(item)" v-show='item.vshow'>-</span>
-          <label v-show='item.vshow'>{{item.number||0}}</label>
+          <label v-show='item.vshow'>{{item.number}}</label>
           <span @click="addCartList(item)">+</span>
         </div>
       </div>
@@ -32,7 +32,8 @@
     <div class="zw"></div>
   </div>
   <!-- 购物车 -->
-  <div class="zz" v-show='showListFlag'>
+  <transition name="fade">
+  <div  class="zz" v-show='showListFlag'>
     <div class="shop_list">
       <div class='shop_list_header'>
         <span>购物车</span><span @click='delAll'>清空</span>
@@ -49,10 +50,11 @@
         </tr>
       </table>
     </div>
-  </div>
+  </div >
+  </transition>
   <div class="cartBottom" @click='showList'>
-    <span>{{ total[0]}}</span>
-    <span>总计￥{{ total[1]}}</span>
+    <span>{{ total[0] || 0}}</span>
+    <span>总计￥{{ total[1] ||0}}</span>
     <span>配送费￥7</span>
     <span>去结算</span>
   </div>
@@ -62,11 +64,11 @@
 <script>
 import imgFormat from '../../utils/utils.js'
 export default {
-  data: function() {
+  data() {
     return {
       storeInfo: [], //商家所有商品信息
       foodsList: [], //商家分类商品信息
-      total: [0, 0], //总价钱、总数量
+      total: [], //总价钱、总数量
       cartList: [], //选中商品列表
       showListFlag: false, //购物车详细列表显示状态
       imgSrc: '../../../static/imgs/logo.png'
@@ -74,21 +76,21 @@ export default {
   },
   methods: {
     // 点击购物车显示详细列表
-    showList: function() {
+    showList() {
       if (this.cartList.length > 0) {
         this.showListFlag = !this.showListFlag;
       }
     },
 
     // 点击购物车中的 “ 清空 ” 按钮
-    delAll: function(item) {
+    delAll(item) {
       this.$store.dispatch('delAll');
       this.showListFlag = false; //显示“-”和数量
       this.cartList = []; //购物车列表
       this.total = [0, 0]; //总价钱、总数量归0
       // 清空所有商品中的数量属性
-      this.storeInfo.map(function(i) {
-        i.foods.map(function(j) {
+      this.storeInfo.map(i=> {
+        i.foods.map(j=> {
           if (j.number != undefined) {
             delete j.vshow;
             delete j.number;
@@ -98,14 +100,14 @@ export default {
     },
 
     // 点击切换商品
-    selectType: function(item) {
+    selectType(item) {
       this.foodsList = this.storeInfo[this.storeInfo.indexOf(item)];
     },
 
     // 添加商品
-    addCartList: function(item) {
+    addCartList(item) {
       this.$store.dispatch('addCartList', item);
-      if (item.number > 0) {
+      if (item.number && item.number > 0) {
         this.vshow = true;
       }
       // 选中商品总价钱、总个数
@@ -126,7 +128,7 @@ export default {
     },
 
     // 减少商品
-    reduceCart: function(item) {
+    reduceCart(item) {
       this.$store.dispatch('reduceCartList', item);
       // 隐藏减少按钮和数量
       if (item.number <= 0) {
@@ -153,7 +155,7 @@ export default {
       }
     },
     // 获取商品列表
-    getData: function() {
+    getData() {
       var $this = this;
       this.$http.get('https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=406884').then(function(res) {
         $this.storeInfo = res.data;
@@ -162,11 +164,11 @@ export default {
     }
   },
 
-  mounted: function() {
+  mounted() {
     this.getData();
   },
   filters: {
-    imgForm: function(i) {
+    imgForm(i) {
       return imgFormat(i);
     }
   }
@@ -183,7 +185,12 @@ export default {
 
 
 /*购物车详细列表  */
-
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
 .zz {
   width: 100%;
   position: fixed;
@@ -191,7 +198,6 @@ export default {
   bottom: 3.2rem;
   background: rgba(0, 0, 0, .5);
 }
-
 .shop_list {
   position: fixed;
   bottom: 3.2rem;

@@ -12,7 +12,7 @@ const state = {
 // 操作state里面的数据
 const mutations = {
     // 添加商品
-    addCartList: function(state, item) {
+    addCartList(state, item) {
         var _item = state.cartList.find(i => i.item_id === item.item_id);
         if (_item) {
             _item.number++;
@@ -23,7 +23,7 @@ const mutations = {
         }
     },
     // 减少商品
-    reduceCartList: function(state, item) {
+    reduceCartList(state, item) {
         if (item.number > 1) {
             item.number--;
         } else if (item.number == 1) {
@@ -33,7 +33,7 @@ const mutations = {
         }
     },
     // 清空商品
-    delAll: function() {
+    delAll() {
         state.cartList = [];
     }
 }
@@ -41,15 +41,15 @@ const mutations = {
 // 调用mutations里面的方法
 const actions = {
     // +
-    addCartList: function(context, item) {
+    addCartList(context, item) {
         context.commit('addCartList', item);
     },
     // -
-    reduceCartList: function({ commit }, item) {
+    reduceCartList({ commit }, item) {
         commit('reduceCartList', item);
     },
     // 清空
-    delAll: function({ commit }) {
+    delAll({ commit }) {
         commit('delAll');
     }
 }
@@ -57,19 +57,9 @@ const actions = {
 // 计算属性
 const getters = {
     // 返回购物车列表
-    getCartList: function() {
+    getCartList() {
         return state.cartList;
     }
-
-    // 计算总价和总数量
-    // getTotal: function() {
-    //     state.total = [0, 0];
-    //     state.cartList.forEach(i => {
-    //         state.total[0] += i.number;
-    //         state.total[1] += i.number * i.specfoods[0].price;
-    //     });
-    //     return state.total;
-    // }
 }
 
 export default new Vuex.Store({

@@ -39,19 +39,17 @@ import shangjiaxinxiPingjia from '../home/shangjiaxinxi_pingjia'
 import store from '../../vuex/store'
 
 export default {
-  data: function() {
+  data() {
     return {
       storeIn: {}, //商家信息
-      currentView: 'shangjia'//商家&评价 组件初始化
+      currentView: 'shangjia' //商家&评价 组件初始化
     }
   },
   methods: {
     // 商家基本信息
-    getShopInfo: function() {
+    getShopInfo() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/shopping/restaurant/406884?extras%5B%5D=activities&extras%5B%5D=license&extras%5B%5D=identification&extras%5B%5D=albums&extras%5B%5D=flavors&latitude=40.07996&longitude=116.35143').then(function(res) {
-        $this.storeIn = res.data;
-      });
+      this.$http.get('https://www.ele.me/restapi/shopping/restaurant/406884?extras%5B%5D=activities&extras%5B%5D=license&extras%5B%5D=identification&extras%5B%5D=albums&extras%5B%5D=flavors&latitude=40.07996&longitude=116.35143').then(res => $this.storeIn = res.data);
     }
   },
   mounted() {
@@ -62,7 +60,7 @@ export default {
     pingjia: shangjiaxinxiPingjia
   },
   filters: {
-    imgForm: function(i) {
+    imgForm(i) {
       return imgFormat(i);
     }
   }
@@ -105,7 +103,7 @@ export default {
 .shop_info .shop_logo img {
   display: block;
   width: 80%;
-  margin: 0 auto;
+  margin: 0px auto;
 }
 
 .shop_info .shop_i {
