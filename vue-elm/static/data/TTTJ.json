@@ -1,0 +1,353 @@
+{
+    "0": {
+        "imgSrc": "https://fuss10.elemecdn.com/6/f4/f9524968fb6f60f94fb44ba00cce0jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "三样菜(工体店)",
+        "DiscountFood30HRb": "大冒江湖套餐",
+        "zheKouPrice": "24",
+        "oldPrice": "48"
+    },
+    "1": {
+        "imgSrc": "https://fuss10.elemecdn.com/8/6f/887988bef986142e42fc6bf0f147bjpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      4.9折\n    ",
+        "DiscountFood3teNW": "湄南河（王府井店）",
+        "DiscountFood30HRb": "单人豪华特惠餐",
+        "zheKouPrice": "79.9",
+        "oldPrice": "163"
+    },
+    "2": {
+        "imgSrc": "https://fuss10.elemecdn.com/b/63/3e699ca3ca7b7982f9a132cf390e2jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.0折\n    ",
+        "DiscountFood3teNW": "湄南河（王府井店）",
+        "DiscountFood30HRb": "黄咖喱鸡肉套餐",
+        "zheKouPrice": "42",
+        "oldPrice": "70"
+    },
+    "3": {
+        "imgSrc": "https://fuss10.elemecdn.com/6/4b/9fdbd501d7697f2de503dbb5ce725jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.8折\n    ",
+        "DiscountFood3teNW": "避风塘（北京崇文门新世界店）",
+        "DiscountFood30HRb": "香辣馋嘴牛蛙四人套餐",
+        "zheKouPrice": "128",
+        "oldPrice": "187"
+    },
+    "4": {
+        "imgSrc": "https://fuss10.elemecdn.com/1/72/6dbf808d8fcf3564a39018303cdd6jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      7.1折\n    ",
+        "DiscountFood3teNW": "避风塘（北京崇文门新世界店）",
+        "DiscountFood30HRb": "酸菜鱼四人套餐",
+        "zheKouPrice": "128",
+        "oldPrice": "180"
+    },
+    "5": {
+        "imgSrc": "https://fuss10.elemecdn.com/2/6f/c27b7685c837699db72f777c7a360jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "烧烤功场（小沙家族车公庄店）",
+        "DiscountFood30HRb": "鸡划算组合",
+        "zheKouPrice": "22.4",
+        "oldPrice": "44.8"
+    },
+    "6": {
+        "imgSrc": "https://fuss10.elemecdn.com/c/e0/45c45f9c06ef70f17857a02a9a880png.png?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "正一味(工美店)",
+        "DiscountFood30HRb": "烤肉饭套餐",
+        "zheKouPrice": "23",
+        "oldPrice": "46"
+    },
+    "7": {
+        "imgSrc": "https://fuss10.elemecdn.com/9/04/0ab2fb938fd4904605c93560b70d7png.png?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "正一味(工美店)",
+        "DiscountFood30HRb": "辣味排骨饭套餐",
+        "zheKouPrice": "23",
+        "oldPrice": "46"
+    },
+    "8": {
+        "imgSrc": "https://fuss10.elemecdn.com/b/c3/ca1bb9861455199b8e8f31e2853ccjpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.6折\n    ",
+        "DiscountFood3teNW": "刀小蛮半只鸡过桥米线（王府井燕莎店）",
+        "DiscountFood30HRb": "半只鸡米线套餐",
+        "zheKouPrice": "49",
+        "oldPrice": "57"
+    },
+    "9": {
+        "imgSrc": "https://fuss10.elemecdn.com/4/d0/ee7ef0cbbb4f290cf9fa307c387b1jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      7.8折\n    ",
+        "DiscountFood3teNW": "刀小蛮半只鸡过桥米线（王府井燕莎店）",
+        "DiscountFood30HRb": "什锦鸡丝凉米线套餐A",
+        "zheKouPrice": "36",
+        "oldPrice": "46"
+    },
+    "10": {
+        "imgSrc": "https://fuss10.elemecdn.com/b/57/5998909edcacb38e380c6d9d742f8jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.6折\n    ",
+        "DiscountFood3teNW": "美乐滋炸鸡汉堡",
+        "DiscountFood30HRb": "双排王者套餐",
+        "zheKouPrice": "43.56",
+        "oldPrice": "66"
+    },
+    "11": {
+        "imgSrc": "https://fuss10.elemecdn.com/c/88/8bfae32029b70d64a4bb8a217e5e7jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.9折\n    ",
+        "DiscountFood3teNW": "由氏·麻辣香锅（广渠门店）",
+        "DiscountFood30HRb": "大虾一人套餐",
+        "zheKouPrice": "28.32",
+        "oldPrice": "48"
+    },
+    "12": {
+        "imgSrc": "https://fuss10.elemecdn.com/c/3f/776cc16ea669fdb5d9ab404fe039ejpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "拼豆夜宵",
+        "DiscountFood30HRb": "解暑必备",
+        "zheKouPrice": "35",
+        "oldPrice": "70"
+    },
+    "13": {
+        "imgSrc": "https://fuss10.elemecdn.com/3/46/432f97293ba69590ce4195c479e03jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      9.0折\n    ",
+        "DiscountFood3teNW": "I LOVE酸菜鱼(崇文门店)",
+        "DiscountFood30HRb": "酸菜鱼",
+        "zheKouPrice": "53.91",
+        "oldPrice": "59.9"
+    },
+    "14": {
+        "imgSrc": "https://fuss10.elemecdn.com/8/91/104b1392f8e187293dcc45077f7bdjpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.8折\n    ",
+        "DiscountFood3teNW": "由氏·麻辣香锅（广渠门店）",
+        "DiscountFood30HRb": "培根一人套餐",
+        "zheKouPrice": "23.9",
+        "oldPrice": "41"
+    },
+    "15": {
+        "imgSrc": "https://fuss10.elemecdn.com/3/0b/0524017889f4b98f318a07f2f1ee9jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.0折\n    ",
+        "DiscountFood3teNW": "一品三笑(东方广场店)",
+        "DiscountFood30HRb": "牛腩饭特价套餐",
+        "zheKouPrice": "28",
+        "oldPrice": "35"
+    },
+    "16": {
+        "imgSrc": "https://fuss10.elemecdn.com/7/d2/fa7810272b2e67ce4bea5fb2ee02bjpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      4.7折\n    ",
+        "DiscountFood3teNW": "晚1点海鲜",
+        "DiscountFood30HRb": "香艳黄金甲",
+        "zheKouPrice": "18",
+        "oldPrice": "38"
+    },
+    "17": {
+        "imgSrc": "https://fuss10.elemecdn.com/a/5d/0a878031134ee351ee7c4fe6fab19png.png?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.0折\n    ",
+        "DiscountFood3teNW": "仔皇煲(磁器口店)",
+        "DiscountFood30HRb": "豉汁排骨煲小菜心餐",
+        "zheKouPrice": "28",
+        "oldPrice": "35"
+    },
+    "18": {
+        "imgSrc": "https://fuss10.elemecdn.com/3/e4/f67d91303a713918ed7bdfec1fc43jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.5折\n    ",
+        "DiscountFood3teNW": "正义煎饼队长",
+        "DiscountFood30HRb": "清醒一夏（照烧软煎+咖啡）",
+        "zheKouPrice": "22",
+        "oldPrice": "34"
+    },
+    "19": {
+        "imgSrc": "https://fuss10.elemecdn.com/b/08/3fe1bb482040662ed1b3da6dceb34jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "韩时烤肉（北京坊店）",
+        "DiscountFood30HRb": "大酱汤A套餐",
+        "zheKouPrice": "22",
+        "oldPrice": "44"
+    },
+    "20": {
+        "imgSrc": "https://fuss10.elemecdn.com/7/c0/29b6b2267115c5fcf50df52d340aejpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.0折\n    ",
+        "DiscountFood3teNW": "呷煮呷烫（王府井书店店）",
+        "DiscountFood30HRb": "酸爽肥牛人气套餐",
+        "zheKouPrice": "36",
+        "oldPrice": "45"
+    },
+    "21": {
+        "imgSrc": "https://fuss10.elemecdn.com/f/a8/d8ab6de08ac02715e37de47ad7a1bjpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.0折\n    ",
+        "DiscountFood3teNW": "呷煮呷烫（王府井书店店）",
+        "DiscountFood30HRb": "欢辣肥牛人气餐",
+        "zheKouPrice": "34.4",
+        "oldPrice": "43"
+    },
+    "22": {
+        "imgSrc": "https://fuss10.elemecdn.com/b/aa/dc2f0eabbe04a933ae603b2cf036dpng.png?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      8.5折\n    ",
+        "DiscountFood3teNW": "仔皇煲(磁器口店)",
+        "DiscountFood30HRb": "酱烧茄子鸡翅乌梅汁套餐",
+        "zheKouPrice": "43.35",
+        "oldPrice": "51"
+    },
+    "23": {
+        "imgSrc": "https://fuss10.elemecdn.com/c/0f/e637792bceddcaa80e72b7d14610ajpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      7.9折\n    ",
+        "DiscountFood3teNW": "晋爱面（东单店）",
+        "DiscountFood30HRb": "私房牛肉面套餐",
+        "zheKouPrice": "31",
+        "oldPrice": "39"
+    },
+    "24": {
+        "imgSrc": "https://fuss10.elemecdn.com/8/05/79f14c80e02f0bb7bc5975342ae37jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      7.9折\n    ",
+        "DiscountFood3teNW": "晋爱面（东单店）",
+        "DiscountFood30HRb": "番茄多C牛肉面套餐",
+        "zheKouPrice": "31",
+        "oldPrice": "39"
+    },
+    "25": {
+        "imgSrc": "https://fuss10.elemecdn.com/6/b9/49cf9061127495d847672d14ad3b0jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.0折\n    ",
+        "DiscountFood3teNW": "烧烤功场（小沙家族车公庄店）",
+        "DiscountFood30HRb": "羊肉串（10串）",
+        "zheKouPrice": "14.4",
+        "oldPrice": "28.8"
+    },
+    "26": {
+        "imgSrc": "https://fuss10.elemecdn.com/c/a7/92479b11d280bb1f1063ca40f1d05jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.8折\n    ",
+        "DiscountFood3teNW": "虾知味",
+        "DiscountFood30HRb": "知味大虾仁",
+        "zheKouPrice": "45.7",
+        "oldPrice": "78.8"
+    },
+    "27": {
+        "imgSrc": "https://fuss10.elemecdn.com/1/2d/68ffb7d6cf77db937f7e4d696a732jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      5.8折\n    ",
+        "DiscountFood3teNW": "虾知味",
+        "DiscountFood30HRb": "知味秘制大虾",
+        "zheKouPrice": "39.9",
+        "oldPrice": "68.8"
+    },
+    "28": {
+        "imgSrc": "https://fuss10.elemecdn.com/4/73/6f36b54de9faff9bdb65ad093cf37jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.4折\n    ",
+        "DiscountFood3teNW": "筷e客",
+        "DiscountFood30HRb": "土豆烧牛肉饭",
+        "zheKouPrice": "16",
+        "oldPrice": "25"
+    },
+    "29": {
+        "imgSrc": "https://fuss10.elemecdn.com/0/e2/84e473d0379f3502562e058d80a92jpeg.jpeg?imageMogr/format/webp/thumbnail/!345x345r/gravity/Center/crop/345x345/",
+        "zhekou": "\n      6.4折\n    ",
+        "DiscountFood3teNW": "筷e客",
+        "DiscountFood30HRb": "照烧鸡肉饭",
+        "zheKouPrice": "15.36",
+        "oldPrice": "24"
+    },
+    "length": 30,
+    "prevObject": {
+        "0": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "1": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "2": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "3": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "4": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "5": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "6": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "7": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "8": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "9": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "10": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "11": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "12": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "13": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "14": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "15": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "16": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "17": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "18": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "19": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "20": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "21": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "22": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "23": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "24": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "25": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "26": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "27": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "28": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "29": {
+            "_prevClass": "TabPage-1ti2W"
+        },
+        "length": 30,
+        "prevObject": {
+            "0": {
+                "location": {
+                    "hash": "#type=special_food&rank_id=9dd3f0a41ea94854be94cf3f191b7dba",
+                    "search": "",
+                    "pathname": "/ranking/",
+                    "port": "",
+                    "hostname": "h5.ele.me",
+                    "host": "h5.ele.me",
+                    "protocol": "https:",
+                    "origin": "https://h5.ele.me",
+                    "href": "https://h5.ele.me/ranking/#type=special_food&rank_id=9dd3f0a41ea94854be94cf3f191b7dba",
+                    "ancestorOrigins": {}
+                }
+            },
+            "length": 1
+        }
+    }
+}
