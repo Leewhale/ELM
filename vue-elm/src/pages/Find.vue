@@ -1,14 +1,22 @@
 <template>
-    <h1>Find</h1>
+<div>
+    <router-view></router-view>
+</div>
 </template>
 
 <script>
 export default {
-    name: 'Find',
-    data: function() {	
-        return {}
+    name: 'name',
+    data: function() {
+        return {
+        }
     },
-    methods: {}
+    methods: {
+        setData:function(){
+        }
+    },mounted () {
+        this.$parent.$emit('cartAdd','aaaaa');
+    }
 }
 </script>
 
