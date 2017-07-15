@@ -33,7 +33,7 @@
           <p><span>{{item.username}}</span><span class="pj_time">{{item.rated_at}}</span></p>
           <p><span>{{item.time_spent_desc}}</span></p>
           <p><span>{{item.rating_text}}</span></p>
-          <p><img v-for='i in item.item_rating_list' :src="i.image_hash | imgForm"></p>
+          <p><img v-for='i in item.item_rating_list' :src="i.image_hash | imgForm" ></p>
         </div>
       </div>
     </div>

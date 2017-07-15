@@ -43,7 +43,7 @@ export default {
       var $this =this;
       this.$http.get('../../../static/data/TTTJ.json').then(function(res) {
         $this.tttj = res.data;
-        console.log(res.data);
+        console.log(res);
       })
     }
   },
