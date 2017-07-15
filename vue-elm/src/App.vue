@@ -1,13 +1,13 @@
 <template>
 <div id="app">
   <router-view></router-view>
-  <footer>
-    <!--active-class="foot-act"-->
+  <div class="zw"></div>
+  <footer v-show = ' $route.path !== $route.fullpath'>
     <router-link tag="div" to="/home" active-class="home-active">
       <span class="home-normal"></span>
       <p>外卖</p>
     </router-link>
-    <router-link tag="div" to="/find" active-class="find-active">
+    <router-link tag="div" to="/find/FindMain" active-class="find-active">
       <span class="find-normal"></span>
       <p>发现</p>
     </router-link>
@@ -24,10 +24,12 @@
 </template>
 
 <script>
+import bus from './bus.js'
 export default {
   name: 'app',
   data() {
     return {
+      cart:[],
       icon: [{
         name: '首页',
         img: './imgs/home1.png'
@@ -47,13 +49,27 @@ export default {
     select: function() {
       console.log("object");
       console.log(this);
+    },
+    cartAdd:function(data){
+      console.log(data);
     }
+  },mounted () {
+    // this.$on('cartAdd',this.cartAdd);
+    bus.$on('cartAdd',this.cartAdd);
   }
 }
 </script>
 
 <style>
+@import '../src/assets/css/reset.css';
+
+.zw{
+  width:100%;
+  height:3.2rem;
+}
+
 footer {
+  z-index:100;
   box-sizing: border-box;
   background: #fff;
   position: fixed;
