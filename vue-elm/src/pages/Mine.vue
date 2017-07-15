@@ -20,7 +20,7 @@
                     <p><span class="mine-mid-yh">{{userData.balance}}</span>个</p>
                     <p>优惠</p>
                 </div>
-                <div>
+                <div @click="$router.push('/jifen')">
                     <p><span class="mine-mid-jf">{{userData.point}}</span>分</p>
                     <p>积分</p>
                 </div>

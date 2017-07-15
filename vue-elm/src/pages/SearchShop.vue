@@ -18,28 +18,15 @@
         </div>
         <!--历史搜索项-->
         <div class="history-items">
-            <a>红薯粉</a>
+            <a v-for="item in history" :key="item" @click="searchShop(item)">{{item}}</a>
         </div>
         <!--热门搜索-->
         <div class="hot-search search">
             <span>热门搜索</span>
-            <span>
-                <img src="../imgs/delete.png" />
-            </span>
-
         </div>
-        <!--历史搜索项-->
+        <!--热门搜索项-->
         <div class="history-items">
-            <a>肉串</a>
-            <a>蜗牛</a>
-            <a>全聚德</a>
-            <a>烤肉</a>
-            <a>红薯粉</a>
-            <a>肉串</a>
-            <a>蜗牛</a>
-            <a>全聚德</a>
-            <a>皮蛋瘦肉粥</a>
-            <a>红薯粉</a>
+            <a v-for="item in hotSearch" :key="item.word" @click="searchShop(item.word)">{{item.word}}</a>
         </div>
     </div>
     <div v-show="!serchFlag">
@@ -100,19 +87,43 @@ export default {
         return {
             serchFlag: true,
             inpValue: '',
-            shopList: []
+            shopList: [],
+            hotSearch: [],
+            history: []
         }
     },
     methods: {
-        searchShop(){
+        searchShop(name){
+            var baseInfo = this.$store.getters.getBaseInfo;
+            if(name !== undefined){
+                this.inpValue = name;
+            }
+            // 将搜索值加入搜索历史
+            this.inpValue != '' && this.history.unshift(this.inpValue);
+            // 存入localStorage
+            window.localStorage.setItem('history', this.history);
+            // 请求数据
             this.inpValue === '' ? this.serchFlag = true : this.serchFlag = false;
-            var baseInfo = this.$store.getters.getBaseInfo,
-            $this = this,
+
+            var $this = this,
             url = `https://www.ele.me/restapi/shopping/restaurants/search?extras%5B%5D=activity&keyword=${this.inpValue}&latitude=${baseInfo.latitude}&limit=100&longitude=${baseInfo.longitude}&offset=0&terminal=web`;
             this.$http.get(url).then(function(res){
                 console.log(res)
                 $this.shopList = res.data.restaurant_with_foods;
             })
+        },
+        getHotSearch(){
+            var $this = this;
+            var baseInfo = this.$store.getters.getBaseInfo;
+            var url = `https://mainsite-restapi.ele.me/shopping/v3/hot_search_words?geohash=wx4snb2gqy7&latitude=${baseInfo.latitude}&longitude=${baseInfo.longitude}`;
+            this.$http.get(url).then(function(res){
+                $this.hotSearch = res.data;
+            })
+        },
+        getHistory(){
+            console.log(window.localStorage);
+            var temp = window.localStorage.getItem('history');
+            temp != undefined && (this.history = temp.split(','));
         }
     },
     filters: {
@@ -120,7 +131,11 @@ export default {
             return Utils(path);
         }
     },
-    components: {}
+    components: {},
+    created(){
+        this.getHotSearch();
+        this.getHistory();
+    }
 }
 </script>
 
@@ -163,12 +178,6 @@ export default {
     color: #666;
     font-size: 0.9rem;
 }
-
-.search span:last-of-type {
-    width: 0.7rem;
-    height: 0.7rem;
-}
-
 .search span:last-of-type img {
     width: 100%;
 }

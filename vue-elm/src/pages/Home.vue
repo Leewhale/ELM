@@ -10,7 +10,7 @@
                     <div class="ads-right">
                         <p>{{weather.temperature}}°</p>
                         <p>{{weather.description}}</p>
-                        <img src="../imgs/deg.png">
+                        <img :src="weather.image_hash | picFormat">
                     </div>
                 </div>
                 <router-link tag="div" class="search" to="/searchShop">
@@ -43,7 +43,7 @@
             <div class="home-show">
                 <h3>推荐商家</h3>
                 <div class="home-show-content">
-                    <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id">
+                    <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id" @click="$router.push('/shopDetail')">
                         <div class="shop-logo">
                             <img :src="item.image_path | picFormat">
                         </div>
@@ -156,6 +156,7 @@ export default {
             var $this = this;
             var url = `https://mainsite-restapi.ele.me/bgs/weather/current?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}`;
             this.$http.get(url).then(function(res){
+                console.log(res);
                 $this.weather = res.data;
             });
         },
@@ -185,8 +186,7 @@ export default {
         // 从store中获取基础信息
         getBaseInfo(){
             this.baseInfo = this.$store.getters.getBaseInfo;
-        }
-        
+        } 
     },
     components: {
         footNav,
