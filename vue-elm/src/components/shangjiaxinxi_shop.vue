@@ -3,7 +3,7 @@
 <div class="shop_list_content">
   <div class="list_left">
     <p v-for='item in storeInfo' @click='selectType(item)' :key="item">
-      <img :src="item.icon_url | imgForm" alt="">
+      <img :src="item.icon_url | imgForm" v-if='item.icon_url' alt="">
       <span>{{item.name}}</span>
     </p>
   </div>
@@ -29,33 +29,32 @@
         </div>
       </div>
     </div>
-    <div class="zw"></div>
   </div>
   <!-- 购物车 -->
   <transition name="fade">
-  <div  class="zz" v-show='showListFlag'>
-    <div class="shop_list">
-      <div class='shop_list_header'>
-        <span>购物车</span><span @click='delAll'>清空</span>
+    <div class="zz" v-show='showListFlag'>
+      <div class="shop_list">
+        <div class='shop_list_header'>
+          <span>购物车</span><span @click='delAll'>清空</span>
+        </div>
+        <table class="shop_list_con">
+          <tr v-for='item in cartList' :key="item">
+            <td>{{item.name}}</td>
+            <td>￥{{item.number*item.specfoods[0].price}}</td>
+            <td class="bianhua">
+              <span @click="reduceCart(item)">-</span>
+              <span>{{item.number}}</span>
+              <span @click="addCartList(item)">+</span>
+            </td>
+          </tr>
+        </table>
       </div>
-      <table class="shop_list_con">
-        <tr v-for='item in cartList' :key="item">
-          <td>{{item.name}}</td>
-          <td>￥{{item.number*item.specfoods[0].price}}</td>
-          <td class="bianhua">
-            <span @click="reduceCart(item)">-</span>
-            <span>{{item.number}}</span>
-            <span @click="addCartList(item)">+</span>
-          </td>
-        </tr>
-      </table>
     </div>
-  </div >
   </transition>
   <div class="cartBottom" @click='showList'>
     <span>{{ total[0] || 0}}</span>
     <span>总计￥{{ total[1] ||0}}</span>
-    <span>配送费￥7</span>
+    <span>配送费￥{{this.psf}}</span>
     <span>去结算</span>
   </div>
 </div>
@@ -64,6 +63,7 @@
 <script>
 import imgFormat from '../utils/utils.js'
 export default {
+  props: ['shop_id', 'psf'],
   data() {
     return {
       storeInfo: [], //商家所有商品信息
@@ -88,8 +88,8 @@ export default {
       this.cartList = []; //购物车列表
       this.total = [0, 0]; //总价钱、总数量归0
       // 清空所有商品中的数量属性
-      this.storeInfo.map(i=> {
-        i.foods.map(j=> {
+      this.storeInfo.map(i => {
+        i.foods.map(j => {
           if (j.number != undefined) {
             delete j.vshow;
             delete j.number;
@@ -109,21 +109,9 @@ export default {
       if (item.number && item.number > 0) {
         this.vshow = true;
       }
-      // 选中商品总价钱、总个数
-      var _this = this;
-      this.total = getTotal();
       // 选中商品列表
       this.cartList = this.$store.state.cartList;
-
-      function getTotal() {
-        // 计算总价钱和总数量
-        _this.total = [0, 0];
-        _this.cartList.forEach(i => {
-          _this.total[0] += i.number;
-          _this.total[1] += i.number * i.specfoods[0].price;
-        });
-        return _this.total;
-      }
+      this.total = this.getTotal();
     },
 
     // 减少商品
@@ -133,36 +121,34 @@ export default {
       if (item.number <= 0) {
         this.vshow = false;
       }
-      // 选中商品总价钱、总个数
-      var _this = this;
-      this.total = getTotal();
       // 选中商品列表
       this.cartList = this.$store.state.cartList;
-
-      function getTotal() {
-        // 计算总价钱和总数量
-        _this.total = [0, 0]; 
-        // 购物车详细列表中没有商品时隐藏
-        if (_this.cartList.length == 0) {
-          _this.showListFlag = false;
-        }
-        _this.cartList.forEach(i => {
-          _this.total[0] += i.number;
-          _this.total[1] += i.number * i.specfoods[0].price;
-        });
-        return _this.total;
+      // 购物车详细列表中没有商品时隐藏
+      if (this.cartList.length == 0) {
+        this.showListFlag = false;
       }
+      this.total = this.getTotal();
     },
+
+    // 计算总价钱和总数量
+    getTotal() {
+      this.total = [0, 0];
+      this.cartList.forEach(i => {
+        this.total[0] += i.number;
+        this.total[1] += i.number * i.specfoods[0].price;
+      });
+      return this.total;
+    },
+
     // 获取商品列表
     getData() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=406884').then(function(res) {
-        $this.storeInfo = res.data;
-        $this.foodsList = $this.storeInfo[0];
+      this.$http.get('https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=' + this.shop_id).then(res => {
+        this.storeInfo = res.data;
+        this.foodsList = res.data[0];
       });
     }
   },
-
   mounted() {
     this.getData();
   },
@@ -184,12 +170,17 @@ export default {
 
 
 /*购物车详细列表  */
-.fade-enter-active, .fade-leave-active {
+
+.fade-enter-active,
+.fade-leave-active {
   transition: opacity 1s
 }
-.fade-enter, .fade-leave-to {
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0
 }
+
 .zz {
   width: 100%;
   position: fixed;
@@ -197,6 +188,7 @@ export default {
   bottom: 3.2rem;
   background: rgba(0, 0, 0, .5);
 }
+
 .shop_list {
   position: fixed;
   bottom: 3.2rem;
@@ -302,12 +294,16 @@ export default {
   position: fixed;
   left: 0;
   width: 25%;
+  overflow-y: auto;
+  height: 100%;
+  border-right: 1px solid #ccc;
 }
 
 .shop_list_content .list_left p {
-  text-align: center;
-  height: 3rem;
-  line-height: 3rem;
+  box-sizing: border-box;
+  font-size: .8rem;
+  border-bottom: 1px solid #e2e2e2;
+  padding: .8rem;
 }
 
 .shop_list_content .list_left p img {
@@ -415,13 +411,6 @@ export default {
 .buy_icon span:nth-child(3) {
   background-color: #3190e8;
   color: #fff;
-}
-
-
-/*隐藏商品*/
-
-.shop_list_content {
-  /*display: none;*/
 }
 
 .shop_info:after,

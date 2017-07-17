@@ -7,6 +7,7 @@ import './config/rem'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './vuex/store'
+import jsonp from 'jsonp'
 
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
@@ -16,9 +17,9 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App }
+    el: '#app',
+    router,
+    store,
+    template: '<App/>',
+    components: { App }
 })

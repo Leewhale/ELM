@@ -26,7 +26,7 @@
         <div class="shop_comment ">
             <span @click='currentView="shangjia"'>商品</span>
             <span @click='currentView="pingjia"'>评价</span></div>
-        <component :is='currentView'></component>
+        <component :is='currentView' :shop_id='params.id' :longitude='params.longitude' :latitude='params.latitude' :psf='storeIn.float_delivery_fee'></component>
     </div>
 </div>
 </template>
@@ -42,15 +42,19 @@ export default {
     data() {
         return {
             storeIn: {}, //商家信息
-            currentView: 'shangjia' //商家&评价 组件初始化
+            currentView: 'shangjia', //商家&评价 组件初始化
+            params: {}
         }
     },
     methods: {
         // 商家基本信息
         getShopInfo() {
-            var $this = this;
-            this.$http.get('https://www.ele.me/restapi/shopping/restaurant/406884?extras%5B%5D=activities&extras%5B%5D=license&extras%5B%5D=identification&extras%5B%5D=albums&extras%5B%5D=flavors&latitude=40.07996&longitude=116.35143').then(res => $this.storeIn = res.data);
+            // var $this = this;
+            this.$http.get(`https://www.ele.me/restapi/shopping/restaurant/${this.params.id}?extras%5B%5D=activities&extras%5B%5D=license&extras%5B%5D=identification&extras%5B%5D=albums&extras%5B%5D=flavors&latitude=${this.params.latitude}&longitude=${this.params.longitude}`).then(res => this.storeIn = res.data);
         }
+    },
+    created() {
+        this.params = this.$route.params;
     },
     mounted() {
         this.getShopInfo();
@@ -68,6 +72,10 @@ export default {
 </script>
 
 <style scoped>
+.zw{
+    width:100%;
+    height:3.2rem;
+}
 .shop_list {
     display: relative;
 }

@@ -24,65 +24,63 @@ const Tttj = resolve => require(['@/pages/find/TianTianTeJia'], resolve)
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
-      path: '/',
-      redirect: '/home'
-    },{
-      path: '/home',
-      name: 'Home',
-      component: Home
-    },{
-      path: '/find',
-      name: 'Find',
-      component: Find
-    },{
-      path: '/order',
-      name: 'Order',
-      component: Order
-    },{
-      path: '/mine',
-      name: 'Mine',
-      component: Mine
-    },{
-      path: '/address',
-      name: 'SearchAdd',
-      component: SearchAdd
-    },{
-      path: '/searchShop',
-      name: 'SearchShop',
-      component: SearchShop
-    },{
-      path: '/shopSort',
-      name: 'ShopSort',
-      component: ShopSort
-    },{
-      path: '/jifen',
-      name: 'Jifen',
-      component: Jifen
-    },{
-      path: '/shopDetail',
-      name: 'ShopDetail',
-      component: ShopDetail,
-       children: [{
-        path: 'shangjiaxinxiShop',
-        meta: {
-            // footerShow: false,
-            title: '商家信息'
-        },
+    routes: [{
+        path: '/',
+        redirect: '/home'
+    }, {
+        path: '/home',
+        name: 'Home',
+        component: Home
+    }, {
+        path: '/find',
+        name: 'Find',
+        component: Find
+    }, {
+        path: '/order',
+        name: 'Order',
+        component: Order
+    }, {
+        path: '/mine',
+        name: 'Mine',
+        component: Mine
+    }, {
+        path: '/address',
+        name: 'SearchAdd',
+        component: SearchAdd
+    }, {
+        path: '/searchShop',
+        name: 'SearchShop',
+        component: SearchShop
+    }, {
+        path: '/shopSort',
+        name: 'ShopSort',
+        component: ShopSort
+    }, {
+        path: '/jifen',
+        name: 'Jifen',
+        component: Jifen
+    }, {
+        path: '/shopDetail',
+        name: 'ShopDetail',
+        component: ShopDetail,
+        children: [{
+            path: 'shangjiaxinxiShop:id',
+            meta: {
+                // footerShow: false,
+                title: '商家信息'
+            },
             component: require('../components/shangjiaxinxi_shop')
         }, {
             path: 'shangjiaxinxi_pingjia',
             component: require('../components/shangjiaxinxi_pingjia')
         }]
-    },{
-      path: '/msrt',
-      name: 'Msrt',
-      component: Msrt
-    },{
-      path: '/tttj',
-      name: 'Tttj',
-      component: Tttj
-    }
-  ]
+    }, {
+        path: '/msrt',
+        name: 'Msrt',
+        component: Msrt
+    }, {
+        path: '/tttj',
+        name: 'Tttj',
+        component: Tttj
+    }]
 })

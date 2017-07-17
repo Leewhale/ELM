@@ -13,7 +13,7 @@ const state = {
 }
 
 const mutations = {
-    setBaseInfo(state, obj){
+    setBaseInfo(state, obj) {
         state.baseInfo = obj;
     },
     // 添加商品
@@ -45,7 +45,7 @@ const mutations = {
 }
 
 const actions = {
-    setBaseInfo( {commit}, obj){
+    setBaseInfo({ commit }, obj) {
         commit('setBaseInfo', obj);
     },
     // +
@@ -63,7 +63,7 @@ const actions = {
 }
 
 const getters = {
-    getBaseInfo(){
+    getBaseInfo() {
         return state.baseInfo;
     },
     // 返回购物车列表

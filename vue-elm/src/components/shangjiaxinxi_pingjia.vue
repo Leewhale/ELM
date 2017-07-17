@@ -44,6 +44,7 @@
 <script>
 import imgFormat from '../utils/utils.js'
 export default {
+  props:['shop_id','longitude','latitude'],
   name: 'name',
   data: function() {
     return {
@@ -58,24 +59,21 @@ export default {
     getPingJia: function(type) {
       var type = type || 1;
       var $this = this;
-      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurant/406884/ratings?limit=10&offset=0&record_type=${type}`).then(function(res) {
+      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurant/${$this.shop_id}/ratings?limit=100&offset=0&record_type=${type}`).then(function(res) {
         $this.pingJia = res.data;
-        console.log($this.pingJia);
       });
     },
     // 综合评价
     getZongHePingJia: function() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurants/406884/rating_scores?latitude=40.07996&longitude=116.35143').then(function(res) {
-        // console.log(res.data);
+      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurants/'+$this.shop_id+'/rating_scores?latitude='+$this.latitude+'&longitude='+$this.longitude).then(function(res) {
         $this.zongHePingJia = res.data;
       })
     },
     // 满意度
     getManYi: function() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurant/406884/rating_categories').then(function(res) {
-        // console.log(res.data);
+      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurant/'+$this.shop_id+'/rating_categories').then(function(res) {
         $this.manYi = res.data;
       })
     }
