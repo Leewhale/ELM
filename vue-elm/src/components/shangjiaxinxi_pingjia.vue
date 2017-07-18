@@ -5,18 +5,18 @@
     <div class="zhpj_L">
       <p>{{zongHePingJia.star_level}}</p>
       <p>综合评价</p>
-      <p>高于周边商家{{(zongHePingJia.compare_rating*100).toFixed(1)}}%</p>
+      <p>高于周边商家{{parseFloat(zongHePingJia.compare_rating).toFixed(1)*100 }}%</p>
     </div>
     <table class="zhpj_R">
       <tr>
         <td>服务态度</td>
         <td>*****</td>
-        <td>{{(zongHePingJia.service_score).toFixed(1)}}</td>
+        <td>{{parseFloat(zongHePingJia.service_score).toFixed(1)}}</td>
       </tr>
       <tr>
         <td>菜品评价</td>
         <td>****</td>
-        <td>{{(zongHePingJia.food_score).toFixed(1)}}</td>
+        <td>{{parseFloat(zongHePingJia.food_score).toFixed(1)}}</td>
       </tr>
     </table>
   </div>
@@ -44,7 +44,7 @@
 <script>
 import imgFormat from '../utils/utils.js'
 export default {
-  name: 'name',
+  props: ['id', 'latitude', 'longitude'],
   data: function() {
     return {
       activeClass: 0,
@@ -58,7 +58,7 @@ export default {
     getPingJia: function(type) {
       var type = type || 1;
       var $this = this;
-      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurant/406884/ratings?limit=10&offset=0&record_type=${type}`).then(function(res) {
+      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurant/${this.id}/ratings?limit=10&offset=0&record_type=${type}`).then(function(res) {
         $this.pingJia = res.data;
         console.log($this.pingJia);
       });
@@ -66,7 +66,7 @@ export default {
     // 综合评价
     getZongHePingJia: function() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurants/406884/rating_scores?latitude=40.07996&longitude=116.35143').then(function(res) {
+      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurants/${this.id}/rating_scores?latitude=${this.latitude}&longitude=${this.longitude}`).then(function(res) {
         // console.log(res.data);
         $this.zongHePingJia = res.data;
       })
@@ -74,7 +74,7 @@ export default {
     // 满意度
     getManYi: function() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/ugc/v1/restaurant/406884/rating_categories').then(function(res) {
+      this.$http.get(`https://www.ele.me/restapi/ugc/v1/restaurant/${this.id}/rating_categories`).then(function(res) {
         // console.log(res.data);
         $this.manYi = res.data;
       })

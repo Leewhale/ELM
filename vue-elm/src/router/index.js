@@ -18,6 +18,8 @@ const Jifen = resolve => require(['@/pages/Jifen'], resolve)
 const ShopDetail = resolve => require(['@/pages/ShopDetail'], resolve)
 const Msrt = resolve => require(['@/pages/find/MeiShiReTui'], resolve)
 const Tttj = resolve => require(['@/pages/find/TianTianTeJia'], resolve)
+const Login = resolve => require(['@/pages/login/Login'], resolve)
+const Regist = resolve => require(['@/pages/login/Register'], resolve)
 
 
 
@@ -83,6 +85,14 @@ export default new Router({
       path: '/tttj',
       name: 'Tttj',
       component: Tttj
+    },{
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },{
+      path: '/regist',
+      name: 'Regist',
+      component: Regist
     }
   ]
 })

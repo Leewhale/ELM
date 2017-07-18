@@ -9,7 +9,8 @@ const state = {
         longitude: 116.39172
     },
     total: [0, 0], //总价&总数量
-    cartList: [] //购物车商品列表
+    cartList: [], //购物车商品列表
+    userInfo: {}
 }
 
 const mutations = {
@@ -40,6 +41,20 @@ const mutations = {
     // 清空商品
     delAll() {
         state.cartList = [];
+    },
+
+    // 注册新用户
+    setUserInfo(state, info){
+        state.userInfo[info.tel] = info;
+    },
+    checkUser(state, info){
+        if(state.userInfo[info.tel]===undefined){
+            return true;
+            console.log('true')
+        }else{
+            return false;
+             console.log('false')
+        }
     }
 
 }
@@ -59,6 +74,13 @@ const actions = {
     // 清空
     delAll({ commit }) {
         commit('delAll');
+    },
+    // 用户名密码
+    setUserInfo({commit}, info){
+        commit('setUserInfo', info);
+    },
+    checkUser({commit}, info){
+        commit('checkUser', info);
     }
 }
 
@@ -69,6 +91,10 @@ const getters = {
     // 返回购物车列表
     getCartList() {
         return state.cartList;
+    },
+    // 获取用户名密码信息
+    getUserInfo() {
+        return state.userInfo;
     }
 }
 

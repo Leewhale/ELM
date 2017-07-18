@@ -5,7 +5,7 @@
         <div class="back-box" @click="$router.back(-1)">
             <img src="../imgs/back2.png" />
         </div>
-        <input type="text" placeholder="请输入商品名称" v-model="inpValue" @keyup.enter="searchShop"/>
+        <input type="text" placeholder="请输入商品名称" v-model="inpValue" @keyup.enter="searchShop()"/>
     </div>
     <div v-show="serchFlag">
         <!--历史搜索-->

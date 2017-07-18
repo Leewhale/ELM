@@ -1,49 +1,50 @@
 <template>
-    <div>
-        <div class="content">
-            <div class="home-head">
-                <div class="address">
-                    <div class="ads-left" @click="toAddress">
-                        <img src="../imgs/dw.png" width="30">
-                        <span class="text_ellipsis">{{baseInfo.name}}</span>
-                    </div>
-                    <div class="ads-right">
-                        <p>{{weather.temperature}}°</p>
-                        <p>{{weather.description}}</p>
-                        <img :src="weather.image_hash | picFormat">
-                    </div>
+<div>
+    <div class="content">
+        <div class="home-head">
+            <div class="address">
+                <div class="ads-left" @click="toAddress">
+                    <img src="../imgs/dw.png" width="30">
+                    <span class="text_ellipsis">{{baseInfo.name}}</span>
                 </div>
-                <router-link tag="div" class="search" to="/searchShop">
-                    <span>搜索商家、商品</span>
-                </router-link>
-                <div class="small-nav">
-                    <span v-for="item in hotSearch" :key="item.word" @click="$router.push('/shopSort')">{{item.word}}</span>
+                <div class="ads-right">
+                    <p>{{weather.temperature}}°</p>
+                    <p>{{weather.description}}</p>
+                    <img :src="weather.image_hash | picFormat">
                 </div>
             </div>
-            <swiper :options="swiperOption" class="lunbo-box">
-                <swiper-slide>
-                     <div class="home-nav">
-                        <div v-for="(item, index) in navList" :key="item.id" v-if="index<8" @click="$router.push('/shopSort')">
-                            <img :src="item.image_hash | picFormat">
-                            <p>{{item.name}}</p>
-                        </div>
+            <router-link tag="div" class="search" to="/searchShop">
+                <span>搜索商家、商品</span>
+            </router-link>
+            <div class="small-nav">
+                <span v-for="item in hotSearch" :key="item.word" @click="$router.push('/shopSort')">{{item.word}}</span>
+            </div>
+        </div>
+        <swiper :options="swiperOption" class="lunbo-box">
+            <swiper-slide>
+                <div class="home-nav">
+                    <div v-for="(item, index) in navList" :key="item.id" v-if="index<8" @click="$router.push('/shopSort')">
+                        <img :src="item.image_hash | picFormat">
+                        <p>{{item.name}}</p>
                     </div>
-                </swiper-slide>
-                <swiper-slide>
-                     <div class="home-nav">
-                        <div v-for="(item, index) in navList" :key="item.id" v-if="index>8" @click="$router.push('/shopSort')">
-                            <img :src="item.image_hash | picFormat">
-                            <p>{{item.name}}</p>
-                        </div>
+                </div>
+            </swiper-slide>
+            <swiper-slide>
+                <div class="home-nav">
+                    <div v-for="(item, index) in navList" :key="item.id" v-if="index>8" @click="$router.push('/shopSort')">
+                        <img :src="item.image_hash | picFormat">
+                        <p>{{item.name}}</p>
                     </div>
-                </swiper-slide>
-                <div class="swiper-pagination" slot="pagination"></div>
-            </swiper>
+                </div>
+            </swiper-slide>
+            <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
 
-            <div class="home-show">
-                <h3>推荐商家</h3>
+        <div class="home-show">
+            <h3>推荐商家</h3>
+              <!-- <mt-loadmore :bottom-method="loadBottom" ref="loadmore">   -->
                 <div class="home-show-content">
-                    <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id" @click="$router.push('/shopDetail')">
+                    <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id" @click="$router.push({name:'ShopDetail', params:{id:item.id, latitude:item.latitude, longitude:item.longitude}})">
                         <div class="shop-logo">
                             <img :src="item.image_path | picFormat">
                         </div>
@@ -71,7 +72,7 @@
                                     <span class="fnzs">蜂鸟专送</span>
                                 </div>
                             </div>
-                            <div class="shop-main-time">
+                             <div class="shop-main-time">
                                 <span>￥{{item.piecewise_agent_fee.rules[0].price}}起送/</span>
                                 <span>{{item.piecewise_agent_fee.description}}/</span>
                                 <span>{{item.average_cost}}</span>
@@ -79,8 +80,8 @@
                                     <span>{{item.distance}}m/</span>
                                     <span class="wite-time">{{item.order_lead_time}}分钟</span>
                                 </div>
-                            </div>
-                            <div class="shop-main-info">
+                            </div> 
+                             <div class="shop-main-info">
                                 <div class="info-show" @click="showAllAct(index,$event)" v-if="item.activities.length>2">
                                     <span>{{item.activities.length}}个活动</span>
                                     <img src="../imgs/upr.png">
@@ -91,24 +92,29 @@
                                         <span>{{act.name}}</span>
                                     </p>
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
-            </div>
+             <!-- </mt-loadmore>  -->
+
         </div>
-        <foot-nav></foot-nav>
     </div>
+    <foot-nav></foot-nav>
+</div>
 </template>
 
 <script>
 import footNav from '../components/Footer_nav'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
+import {
+    swiper,
+    swiperSlide
+} from 'vue-awesome-swiper'
 import Utils from '../utils/utils.js'
 
 export default {
     name: 'Home',
-    data: function () {
+    data: function() {
         return {
             // 商品列表
             shopList: [],
@@ -116,77 +122,85 @@ export default {
             swiperOption: {
                 autoplay: false,
                 loop: true,
-                setWrapperSize :true,
-                pagination : '.swiper-pagination',
-                paginationClickable :true,
+                setWrapperSize: true,
+                pagination: '.swiper-pagination',
+                paginationClickable: true,
                 // mousewheelControl : true,
-                observeParents:true,
+                observeParents: true,
             },
             // swiperSlides: [1, 2, 3, 4, 5]
 
             // 基础信息
-            baseInfo:{},
+            baseInfo: {},
             // 天气信息
-            weather:{},
+            weather: {},
             // 导航图标列表
             navList: [],
             // 热门搜索-上部小导航
-            hotSearch: []
+            hotSearch: [],
+            offset:0
         }
     },
     methods: {
         // 获取商品列表数据
-        getShopList:function(){
+        getShopList: function() {
             var $this = this;
-            var url = `https://mainsite-restapi.ele.me/shopping/restaurants?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&offset=0&limit=20&extras[]=activities&terminal=h5`
-            this.$http.get(url).then(function(res){
-                $this.shopList = res.data;
+            var url = `https://mainsite-restapi.ele.me/shopping/restaurants?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`
+            this.$http.get(url).then(function(res) {
+                $this.shopList = $this.shopList.concat(res.data);
             })
+            this.offset +=20;
         },
         // 获取导航信息
-        getNavList(){
+        getNavList() {
             var $this = this;
             var url = `https://mainsite-restapi.ele.me/shopping/v2/entries?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&templates[]=main_template`;
-            this.$http.get(url).then(function(res){
+            this.$http.get(url).then(function(res) {
                 $this.navList = res.data[0].entries;
             });
         },
         // 获取天气信息
-        getWeather(){
+        getWeather() {
             var $this = this;
             var url = `https://mainsite-restapi.ele.me/bgs/weather/current?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}`;
-            this.$http.get(url).then(function(res){
-                console.log(res);
+            this.$http.get(url).then(function(res) {
                 $this.weather = res.data;
             });
         },
         // 获取热门搜索
-        getHotSearch(){
+        getHotSearch() {
             var $this = this;
             var url = `https://mainsite-restapi.ele.me/shopping/v3/hot_search_words?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}`;
-            this.$http.get(url).then(function(res){
+            this.$http.get(url).then(function(res) {
                 $this.hotSearch = res.data;
             });
         },
         // 点击显示所有活动
-        showAllAct(index,$event){
+        showAllAct(index, $event) {
             var n = this.shopList[index].activities.actShowNum;
-            
+
             // let n = item.activities.actShowNum;
-            if(n==undefined || n==2){
+            if (n == undefined || n == 2) {
                 this.shopList[index].activities.actShowNum = 20;
-            }else{
+            } else {
                 this.shopList[index].activities.actShowNum = 2;
             }
         },
         // 点击地址去地址页
-        toAddress(){
+        toAddress() {
             this.$router.push('/address');
         },
         // 从store中获取基础信息
-        getBaseInfo(){
+        getBaseInfo() {
             this.baseInfo = this.$store.getters.getBaseInfo;
-        } 
+        },
+        // 下拉加载更多
+        loadBottom() {
+            console.log('loadmore');
+            this.getShopList();
+            // this.allLoaded = true;// 若数据已全部获取完毕
+            // this.$refs.loadmore.onBottomLoaded();
+        }
     },
     components: {
         footNav,
@@ -194,11 +208,11 @@ export default {
         swiperSlide
     },
     filters: {
-        picFormat(image_path){
+        picFormat(image_path) {
             return Utils(image_path);
         }
     },
-    created(){
+    created() {
         this.getBaseInfo();
         this.getShopList();
         this.getNavList();
@@ -302,6 +316,7 @@ export default {
     margin-right: 1rem;
     font-size: 0.7rem;
 }
+
 .home-nav {
     width: 100%;
     display: flex;
@@ -325,7 +340,6 @@ export default {
     color: #666;
 }
 
-
 .home-show {
     margin-top: 0.6rem;
     width: 100%;
@@ -345,7 +359,7 @@ export default {
     width: 100%;
 }
 
-.lunbo-box{
+.lunbo-box {
     padding-bottom: 1.2rem;
     background: #fff;
 }

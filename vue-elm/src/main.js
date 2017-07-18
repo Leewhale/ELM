@@ -7,9 +7,11 @@ import './config/rem'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './vuex/store'
+import Mint from 'mint-ui'
 
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
+Vue.use(Mint)
 
 
 Vue.config.productionTip = false

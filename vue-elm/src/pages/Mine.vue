@@ -12,7 +12,7 @@
                         <!--<p class="tel"><i class="iconfont" style="color:#fff; font-size:1.1rem;">&#xe600;</i>{{userData.mobile.substr(0,3)}}****{{userData.mobile.substr(-4,4)}}</p>-->
                          <p class="tel"><i class="iconfont" style="color:#fff; font-size:1.1rem;">&#xe600;</i>183****8416</p>
                     </div>
-                    <div class="iconfont more">&#xe6b0;</div>
+                    <div class="iconfont more" @click="$router.push('/login')">&#xe6b0;</div>
                 </div>
             </div>
             <div class="mine-mid">
@@ -20,7 +20,7 @@
                     <p><span class="mine-mid-yh">{{userData.balance}}</span>个</p>
                     <p>优惠</p>
                 </div>
-                <div @click="$router.push('/jifen')">
+                <div>
                     <p><span class="mine-mid-jf">{{userData.point}}</span>分</p>
                     <p>积分</p>
                 </div>
@@ -31,7 +31,7 @@
                     <span>我的订单</span>
                     <div class="btn iconfont">&#xe6b0;</div>
                 </div>
-                <div class="mine-mine-bar">
+                <div class="mine-mine-bar" @click="$router.push('/jifen')">
                     <i class="iconfont" style="color:#ff7b4d" >&#xe602;</i>
                     <span>积分商城</span>
                     <div class="btn iconfont">&#xe6b0;</div>

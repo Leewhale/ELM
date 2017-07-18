@@ -3,7 +3,7 @@
 <div class="shop_list_content">
   <div class="list_left">
     <p v-for='item in storeInfo' @click='selectType(item)' :key="item">
-      <img :src="item.icon_url | imgForm" alt="">
+      <img :src="item.icon_url | imgForm" alt="" v-if="item.icon_url">
       <span>{{item.name}}</span>
     </p>
   </div>
@@ -56,7 +56,7 @@
     <span>{{ total[0] || 0}}</span>
     <span>总计￥{{ total[1] ||0}}</span>
     <span>配送费￥7</span>
-    <span>去结算</span>
+    <span @click.stop="buy">去结算</span>
   </div>
 </div>
 </template>
@@ -64,6 +64,7 @@
 <script>
 import imgFormat from '../utils/utils.js'
 export default {
+  props: ['id', 'latitude', 'longitude'],
   data() {
     return {
       storeInfo: [], //商家所有商品信息
@@ -156,10 +157,13 @@ export default {
     // 获取商品列表
     getData() {
       var $this = this;
-      this.$http.get('https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=406884').then(function(res) {
+      this.$http.get(`https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=${this.id}`).then(function(res) {
         $this.storeInfo = res.data;
         $this.foodsList = $this.storeInfo[0];
       });
+    },
+    buy(){
+      console.log('结算')
     }
   },
 
@@ -297,17 +301,29 @@ export default {
 
 
 /*商家商品信息*/
+.shop_list_content{
+  position: fixed;
+  top:12rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 
 .shop_list_content .list_left {
-  position: fixed;
-  left: 0;
+  box-sizing: border-box;
+  float: left;
   width: 25%;
+  overflow-y: auto;
+  border-right: 1px solid #ccc;
+  height: 100%;
+  padding-bottom: 3.3rem;
 }
 
 .shop_list_content .list_left p {
-  text-align: center;
-  height: 3rem;
-  line-height: 3rem;
+  padding: 0.7rem 0;
+  padding-left: 0.4rem;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
 }
 
 .shop_list_content .list_left p img {
@@ -315,11 +331,12 @@ export default {
 }
 
 .list_right {
-  position: fixed;
-  width: 75%;
   height: 100%;
+  width: 75%;
+  float: left;
   overflow-y: auto;
-  left: 25%;
+  box-sizing: border-box;
+  padding-bottom: 3.3rem;
 }
 
 .list_right_h {
