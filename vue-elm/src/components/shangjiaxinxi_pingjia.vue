@@ -5,18 +5,18 @@
     <div class="zhpj_L">
       <p>{{zongHePingJia.star_level}}</p>
       <p>综合评价</p>
-      <p>高于周边商家{{(zongHePingJia.compare_rating*100).toFixed(1)}}%</p>
+      <p>高于周边商家{{parseFloat(zongHePingJia.compare_rating*100).toFixed(1)}}%</p>
     </div>
     <table class="zhpj_R">
       <tr>
         <td>服务态度</td>
         <td>*****</td>
-        <td>{{(zongHePingJia.service_score).toFixed(1)}}</td>
+        <td>{{parseFloat(zongHePingJia.service_score).toFixed(1)}}</td>
       </tr>
       <tr>
         <td>菜品评价</td>
         <td>****</td>
-        <td>{{(zongHePingJia.food_score).toFixed(1)}}</td>
+        <td>{{parseFloat(zongHePingJia.food_score).toFixed(1)}}</td>
       </tr>
     </table>
   </div>

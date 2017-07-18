@@ -139,8 +139,8 @@ export default {
 }
 
 .mstjxq_header img {
-  margin: 0 .5rem;
-  vertical-align: text-bottom;
+  /* margin: 0 .5rem; */
+  /* vertical-align: text-bottom; */
   width: 1.5rem;
 }
 

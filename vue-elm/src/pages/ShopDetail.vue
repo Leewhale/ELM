@@ -49,7 +49,6 @@ export default {
     methods: {
         // 商家基本信息
         getShopInfo() {
-            // var $this = this;
             this.$http.get(`https://www.ele.me/restapi/shopping/restaurant/${this.params.id}?extras%5B%5D=activities&extras%5B%5D=license&extras%5B%5D=identification&extras%5B%5D=albums&extras%5B%5D=flavors&latitude=${this.params.latitude}&longitude=${this.params.longitude}`).then(res => this.storeIn = res.data);
         }
     },

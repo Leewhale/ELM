@@ -92,9 +92,9 @@
                 </div>
                 <p>查看更多 ></p>
             </router-link>
-            <router-link tag="div" class="find_B1" :to='types[2].path'>
+            <div tag="div" class="find_B1" @click="$router.push({name:'ShopDetail',params:{id:580167,latitude:40.074121937404,longitude:116.411765851015}})">
                 <div class="find_B1_H">
-                    <span>——</span>
+                    <span>——</span> 
                     <span>☞</span>
                     <span>美食热推</span>
                     <span>——</span>
@@ -118,7 +118,7 @@
                     </div>
                 </div>
                 <p>查看更多 ></p>
-            </router-link>
+            </div>
         </div>
         <router-view></router-view>
     </div>

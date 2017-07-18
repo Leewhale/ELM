@@ -144,7 +144,6 @@ export default {
             var url = `https://mainsite-restapi.ele.me/shopping/restaurants?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&offset=0&limit=20&extras[]=activities&terminal=h5`
             this.$http.get(url).then(function(res) {
                 $this.shopList = res.data;
-                console.log($this.shopList);
             })
         },
         // 获取导航信息
@@ -160,7 +159,6 @@ export default {
             var $this = this;
             var url = `https://mainsite-restapi.ele.me/bgs/weather/current?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}`;
             this.$http.get(url).then(function(res) {
-                console.log(res);
                 $this.weather = res.data;
             });
         },

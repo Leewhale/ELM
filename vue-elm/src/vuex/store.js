@@ -9,7 +9,8 @@ const state = {
         longitude: 116.39172
     },
     total: [0, 0], //总价&总数量
-    cartList: [] //购物车商品列表
+    cartList: [], //购物车商品列表
+    allOrderList: []
 }
 
 const mutations = {
@@ -40,6 +41,12 @@ const mutations = {
     // 清空商品
     delAll() {
         state.cartList = [];
+    },
+    // 订单
+    orderList(state, params) {
+        state.allOrderList.push(params);
+        state.cartList = [];
+        console.log(state.cartList);
     }
 
 }
@@ -59,6 +66,10 @@ const actions = {
     // 清空
     delAll({ commit }) {
         commit('delAll');
+    },
+    // 去结算
+    orderList({ commit }, params) {
+        commit('orderList', params);
     }
 }
 

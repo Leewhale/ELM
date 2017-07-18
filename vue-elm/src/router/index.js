@@ -65,10 +65,6 @@ export default new Router({
         component: ShopDetail,
         children: [{
             path: 'shangjiaxinxiShop:id',
-            meta: {
-                // footerShow: false,
-                title: '商家信息'
-            },
             component: require('../components/shangjiaxinxi_shop')
         }, {
             path: 'shangjiaxinxi_pingjia',

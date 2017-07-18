@@ -1,52 +1,64 @@
 <template>
-    <div>
-        <div class="content">
-            <!--顶部:订单-->
-            <h3 class="bluehead">订单</h3>
-            <!--订单内容项-->
-            <div class="order-list">
-    
-                <!-- <dl> -->
-                <router-link tag="dl" to="/search">
-                    <dt>
-                        <img src="../assets/logo.png" />
+<div>
+    <div class="content">
+        <!--顶部:订单-->
+        <h3 class="bluehead">订单</h3>
+        <!--订单内容项-->
+        <div class="order-list">
+            <!-- <dl> -->
+            <dl v-for='item in order' v-if='order'>
+                <dt>
+                        <img :src="item.orderL[0].image_path | imgForm" />
                     </dt>
-                    <dd>
-                        <div class="top-div">
-                            <div class="line-one">
-                                <p>
-                                    <span>第1佳大鸡排（三旗百汇）</span>
-                                    <span>></span>
-                                </p>
-                                <p>订单已完成</p>
-                            </div>
-                            <p>2017-07-09&nbsp;10:46</p>
+                <dd>
+                    <div class="top-div">
+                        <div class="line-one">
+                            <p>
+                                <span>{{item.orderL[0].name}}</span>
+                                <span>></span>
+                            </p>
+                            <p>订单已完成</p>
                         </div>
-                        <div class="bot-div">
-                            <span>盐酥杏鲍菇等2件商品</span>
-                            <span>￥21.00</span>
-                        </div>
-                    </dd>
-                    <!-- </dl> -->
-                </router-link>
-    
-            </div>
-    
+                        <p>{{item.orderTime}}</p>
+                    </div>
+                    <div class="bot-div">
+                        <span>共{{item.total[0]}}件商品</span>
+                        <span>￥{{item.total[1]}}</span>
+                    </div>
+                </dd>
+                <!-- </dl> -->
+            </dl>
+
         </div>
-        <foot-nav></foot-nav>
+
     </div>
+    <foot-nav></foot-nav>
+</div>
 </template>
 
 <script>
 import footNav from '../components/Footer_nav'
+import imgFormat from '../utils/utils.js'
 export default {
     name: 'Order',
-    data: function () {
-        return {}
+    data: function() {
+        return {
+            order: []
+        }
     },
     methods: {},
     components: {
         footNav
+    },
+    mounted() {
+        this.$store.dispatch('orderList',this.$route.params);
+        this.order = this.$store.state.allOrderList;
+        console.log(this.order);
+    },
+    filters: {
+        imgForm(i) {
+            return imgFormat(i);
+        }
     }
 }
 </script>
@@ -68,8 +80,7 @@ export default {
 }
 
 .order-list dl dt {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 7rem;
     margin-right: 1rem;
 }
 

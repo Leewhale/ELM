@@ -32,7 +32,7 @@
   </div>
   <!-- 购物车 -->
   <transition name="fade">
-    <div class="zz" v-show='showListFlag'>
+    <div class="zz" v-show='showListFlag' @click.self='showList'>
       <div class="shop_list">
         <div class='shop_list_header'>
           <span>购物车</span><span @click='delAll'>清空</span>
@@ -52,10 +52,10 @@
     </div>
   </transition>
   <div class="cartBottom" @click='showList'>
-    <span>{{ total[0] || 0}}</span>
-    <span>总计￥{{ total[1] ||0}}</span>
+    <span>{{ total[0]}}</span>
+    <span>总计￥{{ parseFloat(total[1]).toFixed(2)}}</span>
     <span>配送费￥{{this.psf}}</span>
-    <span>去结算</span>
+    <span @click.stop='qujiesuan'>去结算</span>
   </div>
 </div>
 </template>
@@ -68,8 +68,8 @@ export default {
     return {
       storeInfo: [], //商家所有商品信息
       foodsList: [], //商家分类商品信息
-      total: [], //总价钱、总数量
-      cartList: [], //选中商品列表
+      total: [0, 0], //总价钱、总数量
+      cartList: this.$store.state.cartList, //选中商品列表
       showListFlag: false //购物车详细列表显示状态
     }
   },
@@ -101,6 +101,7 @@ export default {
     // 点击切换商品
     selectType(item) {
       this.foodsList = this.storeInfo[this.storeInfo.indexOf(item)];
+      this.dataContain();
     },
 
     // 添加商品
@@ -133,7 +134,7 @@ export default {
     // 计算总价钱和总数量
     getTotal() {
       this.total = [0, 0];
-      this.cartList.forEach(i => {
+      this.$store.state.cartList.forEach(i => {
         this.total[0] += i.number;
         this.total[1] += i.number * i.specfoods[0].price;
       });
@@ -146,11 +147,43 @@ export default {
       this.$http.get('https://www.ele.me/restapi/shopping/v2/menu?restaurant_id=' + this.shop_id).then(res => {
         this.storeInfo = res.data;
         this.foodsList = res.data[0];
+        this.dataContain();
       });
+    },
+    dataContain() {
+      // 数据合并，购物车中的数据跟请求道的商品数据
+      var foods = this.foodsList.foods,
+        cartL = this.$store.state.cartList;
+      console.log(cartL);
+      for (var i in foods) {
+        if (cartL.length > 0) {
+          for (var j in cartL) {
+            if (foods[i].item_id === cartL[j].item_id) {
+              foods[i] = cartL[j];
+            }
+          }
+        }
+      }
+    },
+
+    // 去结算
+    qujiesuan() {
+      if (this.cartList.length > 0) {
+        this.$router.push({
+          name: 'Order',
+          params: {
+            orderL: this.cartList,
+            total: this.total,
+            orderTime: (new Date()).toLocaleString()
+          }
+        });
+        this.cartList = [];
+      }
     }
   },
   mounted() {
     this.getData();
+    this.total = this.getTotal();
   },
   filters: {
     imgForm(i) {
