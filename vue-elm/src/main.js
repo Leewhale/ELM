@@ -7,8 +7,20 @@ import './config/rem'
 import axios from 'axios'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
 import store from './vuex/store'
-import jsonp from 'jsonp'
+// 使用mint-ui
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css'
+import VueLazyload from 'vue-lazyload'
 
+Vue.use(VueLazyload)
+
+// or with options
+Vue.use(VueLazyload, {
+    preLoad: 3,
+    error: './assets/logo.png',
+    loading: './assets/logo.png',
+    attempt: 1
+})
 Vue.prototype.$http = axios
 Vue.use(VueAwesomeSwiper)
 

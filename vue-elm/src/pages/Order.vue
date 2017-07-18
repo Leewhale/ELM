@@ -55,7 +55,6 @@ export default {
             this.$store.dispatch('orderList', this.$route.params);
         }
         this.order = this.$store.state.allOrderList;
-        console.log(this.order);
     },
     filters: {
         imgForm(i) {

@@ -2,7 +2,7 @@
 <!--商品-->
 <div class="shop_list_content">
   <div class="list_left">
-    <p v-for='item in storeInfo' @click='selectType(item)' :key="item">
+    <p v-for='(item,index) in storeInfo' @click='selectType(item);activeClass=index' :key="index" :class="{typeactive:activeClass==index}">
       <img :src="item.icon_url | imgForm" v-if='item.icon_url' alt="">
       <span>{{item.name}}</span>
     </p>
@@ -66,6 +66,7 @@ export default {
   props: ['shop_id', 'psf'],
   data() {
     return {
+      activeClass: 0,
       storeInfo: [], //商家所有商品信息
       foodsList: [], //商家分类商品信息
       total: [0, 0], //总价钱、总数量
@@ -154,7 +155,6 @@ export default {
       // 数据合并，购物车中的数据跟请求道的商品数据
       var foods = this.foodsList.foods,
         cartL = this.$store.state.cartList;
-      console.log(cartL);
       for (var i in foods) {
         if (cartL.length > 0) {
           for (var j in cartL) {
@@ -195,6 +195,10 @@ export default {
 
 <style scoped>
 /**购物车 */
+
+.typeactive {
+  border-left: 2px solid #3190e8;
+}
 
 .zw {
   width: 100%;
@@ -323,13 +327,23 @@ export default {
 
 /*商家商品信息*/
 
-.shop_list_content .list_left {
+.shop_list_content {
   position: fixed;
+  top: 12.5rem;
+  bottom: 0;
   left: 0;
+  right: 0;
+}
+
+.shop_list_content .list_left {
+  left: 0;
+  float: left;
   width: 25%;
-  overflow-y: auto;
+  overflow-y: overlay;
   height: 100%;
+  box-sizing: border-box;
   border-right: 1px solid #ccc;
+  padding-bottom: 3.3rem;
 }
 
 .shop_list_content .list_left p {
@@ -344,11 +358,13 @@ export default {
 }
 
 .list_right {
-  position: fixed;
+  float: left;
   width: 75%;
   height: 100%;
-  overflow-y: auto;
+  overflow-y: overlay;
   left: 25%;
+  box-sizing: border-box;
+  padding-bottom: 3.3rem;
 }
 
 .list_right_h {

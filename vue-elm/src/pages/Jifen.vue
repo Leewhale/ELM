@@ -91,7 +91,7 @@
                         <span>{{item.corner}}</span>
                     </p>
                     <div>
-                        <img :src="item.imgSrc" />
+                        <img :src="item.imgSrc" v-lazy='item.imgSrc' />
                     </div>
                 </li>
             </ul>
@@ -160,8 +160,16 @@ export default {
   width: 0.5rem;
   height: 0.5rem;
 }
-
-
+/*懒加载  */
+img[lazy=loading] {
+  opacity: 0;
+}
+img[lazy=error] {
+  
+}
+img[lazy=loaded] {
+  opacity: 1;
+}
 /*两个菜单*/
 
 .jifen-order {

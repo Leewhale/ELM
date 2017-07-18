@@ -10,7 +10,9 @@ const state = {
     },
     total: [0, 0], //总价&总数量
     cartList: [], //购物车商品列表
-    allOrderList: []
+    allOrderList: [],
+    userInfo: {},
+    nowUser: null
 }
 
 const mutations = {
@@ -47,6 +49,24 @@ const mutations = {
         state.allOrderList.push(params);
         state.cartList = [];
         console.log(state.cartList);
+    },
+
+    // 注册新用户
+    setUserInfo(state, info) {
+        state.userInfo[info.tel] = info;
+    },
+    checkUser(state, info) {
+        if (state.userInfo[info.tel] === undefined) {
+            return true;
+            console.log('true')
+        } else {
+            return false;
+            console.log('false')
+        }
+    },
+    // 设置当前用户
+    setNowUser(state, obj) {
+        state.nowUser = obj;
     }
 
 }
@@ -70,6 +90,17 @@ const actions = {
     // 去结算
     orderList({ commit }, params) {
         commit('orderList', params);
+    },
+    // 用户名密码
+    setUserInfo({ commit }, info) {
+        commit('setUserInfo', info);
+    },
+    checkUser({ commit }, info) {
+        commit('checkUser', info);
+    },
+    // 设置当前用户
+    setNowUser({ commit }, obj) {
+        commit('setNowUser', obj)
     }
 }
 
@@ -80,6 +111,13 @@ const getters = {
     // 返回购物车列表
     getCartList() {
         return state.cartList;
+    },
+    // 获取用户名密码信息
+    getUserInfo() {
+        return state.userInfo;
+    },
+    getNowUser() {
+        return state.nowUser;
     }
 }
 

@@ -45,14 +45,6 @@ export default {
         },
         //验证用户输入的信息是否存在
         checkIs: function (tel, passwo) {
-            // this.dat.map(function (item) {
-            //     if ((item.phone == tel) || (item.passw == passwo)) {
-            //         console.log('pipei');
-            //         this.$router.push({ path: '/home', params: {} });
-            //     }
-            // })
-            // console.log(this.dat);
-
         }
     }
 }

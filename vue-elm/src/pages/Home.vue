@@ -42,8 +42,9 @@
 
         <div class="home-show">
             <h3>推荐商家</h3>
+            <!-- <mt-loadmore :bottom-method="loadBottom" ref="loadmore">    -->
             <div class="home-show-content">
-                <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id" @click="$router.push({name:'ShopDetail',params:{id:item.id,latitude:item.latitude,longitude:item.longitude}})">
+                <div class="shop-info-box" v-for="(item,index) in shopList" :key="item.id" @click="$router.push({name:'ShopDetail', params:{id:item.id, latitude:item.latitude, longitude:item.longitude}})">
                     <div class="shop-logo">
                         <img :src="item.image_path | picFormat">
                     </div>
@@ -95,6 +96,8 @@
                     </div>
                 </div>
             </div>
+            <div class="addMore" @click="addMore()">点击加载更多...</div>
+            <!-- </mt-loadmore>   -->
         </div>
     </div>
     <foot-nav></foot-nav>
@@ -103,6 +106,8 @@
 
 <script>
 import footNav from '../components/Footer_nav'
+import { Indicator } from 'mint-ui'
+import { Loadmore } from 'mint-ui';
 import {
     swiper,
     swiperSlide
@@ -134,17 +139,20 @@ export default {
             // 导航图标列表
             navList: [],
             // 热门搜索-上部小导航
-            hotSearch: []
+            hotSearch: [],
+            offset: 0
         }
     },
     methods: {
         // 获取商品列表数据
         getShopList: function() {
             var $this = this;
-            var url = `https://mainsite-restapi.ele.me/shopping/restaurants?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&offset=0&limit=20&extras[]=activities&terminal=h5`
+            var url = `https://mainsite-restapi.ele.me/shopping/restaurants?latitude=${this.baseInfo.latitude}&longitude=${this.baseInfo.longitude}&offset=${this.offset}&limit=20&extras[]=activities&terminal=h5`
             this.$http.get(url).then(function(res) {
-                $this.shopList = res.data;
+                $this.shopList = $this.shopList.concat(res.data);
+                Indicator.close();
             })
+            this.offset += 20;
         },
         // 获取导航信息
         getNavList() {
@@ -188,6 +196,22 @@ export default {
         // 从store中获取基础信息
         getBaseInfo() {
             this.baseInfo = this.$store.getters.getBaseInfo;
+        },
+        // 下拉加载更多--有bug
+        loadBottom() {
+            console.log('loadmore');
+            this.getShopList();
+            // this.allLoaded = true;// 若数据已全部获取完毕
+            // this.$refs.loadmore.onBottomLoaded();
+        },
+        // 点击加载更多
+        addMore() {
+            console.log(Indicator);
+            Indicator.open({
+                text: '加载中...',
+                // spinnerType: 'double-bounce'
+            });
+            this.getShopList();
         }
     },
     components: {
@@ -350,5 +374,11 @@ export default {
 .lunbo-box {
     padding-bottom: 1.2rem;
     background: #fff;
+}
+
+.addMore {
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
 }
 </style>

@@ -245,4 +245,8 @@ export default {
     vertical-align: top;
     margin-top: 0.4rem;
 }
+/*隐藏滚动条  */
+::-webkit-scrollbar{
+  display:none;
+}
 </style>

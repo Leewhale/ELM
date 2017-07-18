@@ -24,8 +24,8 @@
     </div>
     <div class="shop_cont">
         <div class="shop_comment ">
-            <span @click='currentView="shangjia"'>商品</span>
-            <span @click='currentView="pingjia"'>评价</span></div>
+            <span @click='currentView="shangjia";shangpin_pingjia=1' :class="{typeactive:shangpin_pingjia==1}">商品</span>
+            <span @click='currentView="pingjia";shangpin_pingjia=2' :class="{typeactive:shangpin_pingjia==2}">评价</span></div>
         <component :is='currentView' :shop_id='params.id' :longitude='params.longitude' :latitude='params.latitude' :psf='storeIn.float_delivery_fee'></component>
     </div>
 </div>
@@ -41,6 +41,7 @@ import store from '../vuex/store'
 export default {
     data() {
         return {
+            shangpin_pingjia: 1,
             storeIn: {}, //商家信息
             currentView: 'shangjia', //商家&评价 组件初始化
             params: {}
@@ -79,7 +80,11 @@ export default {
     display: relative;
 }
 
-
+.typeactive{
+    color:blue;
+    border-bottom:2px solid #3190e8;
+    z-index:10;
+}
 /*商家信息*/
 
 .shop_header {
