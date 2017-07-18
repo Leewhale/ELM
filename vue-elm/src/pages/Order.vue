@@ -6,7 +6,7 @@
         <!--订单内容项-->
         <div class="order-list">
             <!-- <dl> -->
-            <dl v-for='item in order' v-if='order'>
+            <dl v-for='item in order'>
                 <dt>
                         <img :src="item.orderL[0].image_path | imgForm" />
                     </dt>
@@ -43,7 +43,7 @@ export default {
     name: 'Order',
     data: function() {
         return {
-            order: []
+            order: this.$store.state.allOrderList
         }
     },
     methods: {},
@@ -51,7 +51,9 @@ export default {
         footNav
     },
     mounted() {
-        this.$store.dispatch('orderList',this.$route.params);
+        if (this.$route.params.total != undefined) {
+            this.$store.dispatch('orderList', this.$route.params);
+        }
         this.order = this.$store.state.allOrderList;
         console.log(this.order);
     },

@@ -12,7 +12,7 @@
                         <!--<p class="tel"><i class="iconfont" style="color:#fff; font-size:1.1rem;">&#xe600;</i>{{userData.mobile.substr(0,3)}}****{{userData.mobile.substr(-4,4)}}</p>-->
                          <p class="tel"><i class="iconfont" style="color:#fff; font-size:1.1rem;">&#xe600;</i>183****8416</p>
                     </div>
-                    <div class="iconfont more">&#xe6b0;</div>
+                    <div class="iconfont more"  @click="$router.push('/login')">&#xe6b0;</div>
                 </div>
             </div>
             <div class="mine-mid">

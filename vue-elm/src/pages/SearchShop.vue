@@ -95,9 +95,13 @@ export default {
     methods: {
         searchShop(name){
             var baseInfo = this.$store.getters.getBaseInfo;
-            if(name !== undefined){
+            // if(name !== undefined){
+            //     this.inpValue = name;
+            // }
+            if(typeof(name)==="string"){
                 this.inpValue = name;
             }
+
             // 将搜索值加入搜索历史
             this.inpValue != '' && this.history.unshift(this.inpValue);
             // 存入localStorage

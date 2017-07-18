@@ -1,0 +1,85 @@
+.header {
+  height: 3rem;
+  background-color: #2395ff;
+  display: flex;
+  line-height: 3rem;
+  color: #fff;
+}
+
+.header span {
+  width: 10%;
+  margin-left: 1rem;
+  margin-top: 0.2rem;
+}
+
+.header span img {
+  width: 25%;
+}
+
+.header strong {
+  width: 65%;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+
+/*内容*/
+
+.register-content {
+  background-color: #f5f5f5;
+  height: 40rem;
+  padding-top: 1rem;
+  position: absolute;
+}
+
+
+/*手机号和密码框*/
+
+.register-input {
+  width: 100%;
+  height: 2.5rem;
+}
+
+.register-input input {
+  width: 100%;
+  height: 2.5rem;
+  border: 0.1rem solid #ddd;
+  text-indent: 1rem;
+  color: #666;
+  outline: none;
+}
+
+.register-content p {
+  line-height: 1.5rem;
+  font-size: 0.6rem;
+  color: #999;
+  padding: 1rem 0.7rem;
+}
+
+.register-content .registerBtn-box {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.register-content .registerBtn-box button {
+  width: 100%;
+  height: 2.8rem;
+  border: 0;
+  background-color: #00d762;
+  color: #fff;
+  font-weight: bold;
+}
+
+.register-content .reminder {
+  text-align: center;
+  position: relative;
+  top: 4rem;
+}
+
+.register-content .reminder span {
+  background-color: #ddd;
+  padding: 0.8rem;
+  border-radius: 1.5rem;
+  color: #999;
+  font-size: 0.7rem;
+}
